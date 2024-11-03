@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth.js";
 import hotelRoute from "./routes/hotels.js";
+import userRoute from "./routes/users.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -18,13 +20,15 @@ const connect = async () => {
 };
 
 //middleware
+app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelRoute);
+app.use("/api/users", userRoute);
 
 app.use((err, req, res, next) => {
-  const errorStatus = err.status;
-  const errorMessage = err.message;
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "something went Wrong";
 
   return res.status(errorStatus).json({
     success: false,
