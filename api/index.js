@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth.js";
+import hotelRoute from "./routes/hotels.js";
 
 const app = express();
 
@@ -17,8 +18,9 @@ const connect = async () => {
 };
 
 //middleware
-
-app.use("/auth", authRoute);
+app.use(express.json());
+app.use("/api/auth", authRoute);
+app.use("/api/hotels", hotelRoute);
 
 app.listen(8800, () => {
   connect();
