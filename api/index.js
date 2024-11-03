@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import authRoute from "./routes/auth.js";
 
 const app = express();
 
@@ -15,7 +16,12 @@ const connect = async () => {
   }
 };
 
+//middleware
+
+app.use("/auth", authRoute);
+
 app.listen(8800, () => {
   connect();
+
   console.log("app started at 8800!");
 });
