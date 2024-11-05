@@ -2,6 +2,7 @@ import express from "express";
 import Hotel_models from "../models/hotel_models.js";
 import {
   countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getAllHotels,
@@ -29,6 +30,6 @@ router.get("/find/:id", getHotel);
 
 router.get("/", getAllHotels);
 router.get("/countByCity", countByCity);
-router.get("/countByType", getAllHotels);
+router.get("/countByType", countByType);
 
 export default router;
