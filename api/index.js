@@ -6,7 +6,7 @@ import hotelRoute from "./routes/hotels.js";
 import userRoute from "./routes/users.js";
 import roomRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
-import cors from "cors"
+import cors from "cors";
 const app = express();
 
 dotenv.config();
@@ -21,7 +21,7 @@ const connect = async () => {
 };
 
 //middleware
-app.use(cors({origin: "http://localhost:3000", credentials: true}));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
